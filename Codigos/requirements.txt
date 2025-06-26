@@ -1,0 +1,9 @@
+transformers==4.40.0
+torch
+streamlit
+sacremoses
+faiss-cpu
+sentence_transformers
+PyMuPDF
+python-docx
+PyPDF2

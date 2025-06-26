@@ -1,0 +1,8 @@
+Definición del Problema:
+    Sistema educativo que traduzca material didactico y responda preguntas de 
+    estudiantes en diferentes idiomas
+
+Corpus textual relevante a utilizar:
+    Helsinski
+
+

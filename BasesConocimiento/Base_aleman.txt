@@ -1,0 +1,19 @@
+Künstliche Intelligenz (KI) ist ein Zweig der Informatik, der sich darauf konzentriert, Systeme zu schaffen, die Aufgaben ausführen können, die typischerweise menschliche Intelligenz erfordern. Diese Aufgaben umfassen Schlussfolgern, Lernen, Problemlösung, Wahrnehmung und Sprachverständnis.
+
+Maschinelles Lernen ist ein Teilbereich der KI, der Computern ermöglicht, aus Daten zu lernen und ihre Leistung im Laufe der Zeit zu verbessern, ohne explizit programmiert zu werden. Es umfasst Algorithmen, die Muster erkennen und Entscheidungen basierend auf Daten treffen.
+
+Deep Learning ist eine spezialisierte Form des maschinellen Lernens, die neuronale Netze mit vielen Schichten verwendet. Es hat große Fortschritte in Bereichen wie Bilderkennung, Sprachverarbeitung und natürlichem Sprachverständnis ermöglicht.
+
+Die Verarbeitung natürlicher Sprache (Natural Language Processing, NLP) erlaubt es Computern, menschliche Sprache zu interpretieren, zu erzeugen und sinnvoll darauf zu reagieren. NLP treibt Anwendungen wie Chatbots, Sprachübersetzung, Sentiment-Analyse und Textzusammenfassung an.
+
+Generative Modelle wie GPT-3 und GPT-4 sind in der Lage, kohärenten und kontextuell relevanten Text zu erzeugen, indem sie aus großen Mengen sprachlicher Daten lernen. Sie werden in Chatbots, Content-Erstellung und Programmierhilfe eingesetzt.
+
+Computer Vision ist ein Bereich der KI, der Maschinen befähigt, visuelle Informationen aus der Welt wie Bilder und Videos zu interpretieren und zu verstehen. Anwendungen umfassen Gesichtserkennung, autonome Fahrzeuge und medizinische Bildgebung.
+
+Robotik kombiniert KI mit Maschinenbau, um Maschinen zu schaffen, die komplexe Aufgaben autonom oder halbautonom ausführen können, wie Fertigung, Lieferung und Erkundung.
+
+Ethische Überlegungen in der KI umfassen Fairness, Transparenz, Verantwortlichkeit und Datenschutz. Verantwortungsvolle KI-Entwicklung zielt darauf ab, Verzerrungen zu minimieren und sicherzustellen, dass die Technologie der Gesellschaft zugutekommt.
+
+Die Zukunft der KI birgt das Potenzial für transformative Auswirkungen in Branchen wie Gesundheit, Bildung, Transport und Unterhaltung, wirft aber auch wichtige Herausforderungen in Bezug auf Arbeitsplatzverlust und Regulierung auf.
+
+Das Verständnis von KI und ihren Teilgebieten ist entscheidend, um ihre Fähigkeiten zu nutzen und ihre Herausforderungen in der modernen Welt zu bewältigen.

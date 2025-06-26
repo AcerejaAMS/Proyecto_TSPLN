@@ -1,0 +1,20 @@
+La inteligencia artificial (IA) es una rama de la informática enfocada en crear sistemas capaces de realizar tareas que normalmente requieren inteligencia humana. Estas tareas incluyen razonamiento, aprendizaje, resolución de problemas, percepción y comprensión del lenguaje.
+
+El aprendizaje automático es una subárea de la IA que permite a las computadoras aprender a partir de datos y mejorar su rendimiento con el tiempo sin ser programadas explícitamente. Involucra algoritmos que identifican patrones y toman decisiones basadas en datos.
+
+El aprendizaje profundo es una forma especializada de aprendizaje automático que utiliza redes neuronales con muchas capas. Ha impulsado grandes avances en áreas como el reconocimiento de imágenes, el procesamiento del habla y la comprensión del lenguaje natural.
+
+El procesamiento del lenguaje natural (PLN) permite a las computadoras interpretar, generar y responder al lenguaje humano de manera valiosa. El PLN impulsa aplicaciones como chatbots, traducción de idiomas, análisis de sentimientos y resumen de texto.
+
+Los modelos generativos como GPT-3 y GPT-4 son capaces de producir texto coherente y contextualmente relevante al aprender de grandes cantidades de datos lingüísticos. Se utilizan en chatbots, creación de contenido y asistencia en programación.
+
+La visión por computadora es un campo de la IA que permite a las máquinas interpretar y comprender información visual del mundo, como imágenes y videos. Las aplicaciones incluyen reconocimiento facial, vehículos autónomos e imágenes médicas.
+
+La robótica combina IA con ingeniería mecánica para crear máquinas que pueden realizar tareas complejas de forma autónoma o semiautónoma, como manufactura, entregas y exploración.
+
+Las consideraciones éticas en IA incluyen justicia, transparencia, responsabilidad y privacidad. El desarrollo responsable de IA busca minimizar sesgos y asegurar que la tecnología beneficie a la sociedad.
+
+El futuro de la IA tiene potencial para impactos transformadores en industrias como la salud, la educación, el transporte y el entretenimiento, pero también plantea desafíos importantes relacionados con la pérdida de empleo y la regulación.
+
+Entender la IA y sus subcampos es crucial para aprovechar sus capacidades y enfrentar sus desafíos en el mundo moderno.
+
