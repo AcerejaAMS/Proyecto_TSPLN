@@ -5,4 +5,4 @@ Definición del Problema:
 Corpus textual relevante a utilizar:
     Helsinski
 
-
+Para ejecutar solo Inicializar el Archivo .bat
