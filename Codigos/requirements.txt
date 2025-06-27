@@ -7,3 +7,4 @@ sentence_transformers
 PyMuPDF
 python-docx
 PyPDF2
+sacrebleu

@@ -41,7 +41,7 @@ def chatbot(prompt, traductor_func, i1_i2_tokenizer, i2_i1_tokenizer, i1_i2_mode
 
         # Crear prompt combinado con contexto
         if contexto:
-            prompt_con_contexto = f"Contexto:\n{contexto}\n\nPregunta:\n{prompt_traducido}"
+            prompt_con_contexto = f"Contexto:{contexto}"
         else:
             prompt_con_contexto = prompt_traducido
 

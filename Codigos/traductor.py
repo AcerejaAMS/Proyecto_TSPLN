@@ -1,4 +1,5 @@
 from transformers import MarianMTModel, MarianTokenizer
+import sacrebleu
 
 def cargar_modelo_traduccion(idioma_origen, idioma_destino):
     modelo_seleccionado = f'Helsinki-NLP/opus-mt-{idioma_origen}-{idioma_destino}'
@@ -19,3 +20,7 @@ def traductor(texto, modelo, tokenizer):
         early_stopping=True
     )
     return tokenizer.decode(traduccion[0], skip_special_tokens=True)
+
+def evaluar_traduccion(traduccion_generada, traduccion_referencia):
+    bleu = sacrebleu.corpus_bleu([traduccion_generada], [[traduccion_referencia]])
+    return bleu.score
