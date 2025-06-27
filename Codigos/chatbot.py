@@ -3,12 +3,14 @@ from sentence_transformers import SentenceTransformer
 import faiss
 import numpy as np
 
+# Modelo de chatbot basado en DialoGPT
 dialogo_tokenizer = GPT2Tokenizer.from_pretrained("microsoft/DialoGPT-medium")
 dialogo_modelo = GPT2LMHeadModel.from_pretrained("microsoft/DialoGPT-medium")
 
 # Modelo de embeddings
 modelo_embed = SentenceTransformer('paraphrase-MiniLM-L6-v2')
 
+# Función para leer base de conocimiento y traducir fragmentos
 def preparar_base_conocimiento(texto_largo, traductor_func, modelo_trad, tokenizer_trad):
     fragmentos = [p.strip() for p in texto_largo.split('\n') if p.strip()]
     fragmentos_traducidos = [traductor_func(p, modelo_trad, tokenizer_trad) for p in fragmentos]

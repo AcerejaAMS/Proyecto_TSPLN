@@ -16,7 +16,7 @@ if "historial" not in st.session_state:
     st.session_state.historial = []
 
 if "documento" not in st.session_state:
-    st.session_state.documento = ""  # Contenido del documento
+    st.session_state.documento = ""
 
 if "base_index" not in st.session_state:
     st.session_state.base_index = None
@@ -50,7 +50,7 @@ if archivo:
         doc = docx.Document(archivo)
         contenido = "\n".join(p.text for p in doc.paragraphs if p.text.strip())
 
-    st.session_state.documento = contenido  # Guardar contenido
+    st.session_state.documento = contenido 
     st.success("Documento cargado correctamente.")
     st.text_area("Vista previa del contenido del documento", contenido, height=200)
 
@@ -86,6 +86,7 @@ def union(idioma_entrada, idioma_salida, texto):
 
     return respuestas
 
+# Función para imprimir los mensajes en el chat
 def enviar_mensaje():
     texto = st.session_state.input_text
     if texto.strip() != "":
