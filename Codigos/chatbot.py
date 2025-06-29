@@ -4,13 +4,13 @@ from sentence_transformers import SentenceTransformer
 import faiss
 import numpy as np
 
-# # Modelo de chatbot basado en DialoGPT
-# dialogo_tokenizer = GPT2Tokenizer.from_pretrained("microsoft/DialoGPT-medium")
-# dialogo_modelo = GPT2LMHeadModel.from_pretrained("microsoft/DialoGPT-medium")
+# Modelo de chatbot basado en DialoGPT
+dialogo_tokenizer = GPT2Tokenizer.from_pretrained("microsoft/DialoGPT-medium")
+dialogo_modelo = GPT2LMHeadModel.from_pretrained("microsoft/DialoGPT-medium")
 
 # Modelo de chatbot con BlenderBot
-dialogo_tokenizer = BlenderbotTokenizer.from_pretrained("facebook/blenderbot-400M-distill")
-dialogo_modelo = BlenderbotForConditionalGeneration.from_pretrained("facebook/blenderbot-400M-distill")
+# dialogo_tokenizer = BlenderbotTokenizer.from_pretrained("facebook/blenderbot-400M-distill")
+# dialogo_modelo = BlenderbotForConditionalGeneration.from_pretrained("facebook/blenderbot-400M-distill")
 
 # Modelo de embeddings
 modelo_embed = SentenceTransformer('paraphrase-MiniLM-L6-v2')
@@ -25,34 +25,34 @@ def preparar_base_conocimiento(texto_largo, traductor_func, modelo_trad, tokeniz
     return index, fragmentos_traducidos
 
 # Para GPT
-# def generar_respuesta(prompt):
-#     entrada = dialogo_tokenizer.encode(prompt + " ", return_tensors='pt')
-#     salida = dialogo_modelo.generate(
-#         entrada, 
-#         max_length=150,
-#         num_beams=5,
-#         temperature=0.9,
-#         top_k=50,
-#         top_p=0.9,
-#         repetition_penalty=1.2,
-#         pad_token_id=dialogo_tokenizer.eos_token_id
-#     )
-    
-#     return dialogo_tokenizer.decode(salida[0], skip_special_tokens=True)
-
-# Para BlenderBot
 def generar_respuesta(prompt):
-    entrada = dialogo_tokenizer([prompt], return_tensors='pt')
+    entrada = dialogo_tokenizer.encode(prompt + " ", return_tensors='pt')
     salida = dialogo_modelo.generate(
-        **entrada,
+        entrada, 
         max_length=150,
         num_beams=5,
-        temperature=0.8,
+        temperature=0.9,
+        top_k=50,
         top_p=0.9,
-        repetition_penalty=1.1,
+        repetition_penalty=1.2,
         pad_token_id=dialogo_tokenizer.eos_token_id
     )
-    return dialogo_tokenizer.batch_decode(salida, skip_special_tokens=True)[0]
+    
+    return dialogo_tokenizer.decode(salida[0], skip_special_tokens=True)
+
+# Para BlenderBot
+# def generar_respuesta(prompt):
+#     entrada = dialogo_tokenizer([prompt], return_tensors='pt', truncation=True, max_length=128)
+#     salida = dialogo_modelo.generate(
+#         **entrada,
+#         max_length=150,
+#         num_beams=5,
+#         temperature=0.8,
+#         top_p=0.9,
+#         repetition_penalty=1.1,
+#         pad_token_id=dialogo_tokenizer.eos_token_id
+#     )
+#     return dialogo_tokenizer.batch_decode(salida, skip_special_tokens=True)[0]
 
 
 def chatbot(prompt, traductor_func, i1_i2_tokenizer, i2_i1_tokenizer, i1_i2_modelo, i2_i1_modelo,
@@ -71,8 +71,10 @@ def chatbot(prompt, traductor_func, i1_i2_tokenizer, i2_i1_tokenizer, i1_i2_mode
         # Crear prompt combinado con contexto
         if contexto:
             prompt_con_contexto = f"Contexto:{contexto}"
+            print('Hubo contexto')
         else:
             prompt_con_contexto = prompt_traducido
+            print('No hubo contexto')
 
         # Generar respuesta en idioma de salida
         respuesta_traducida = generar_respuesta(prompt_con_contexto)

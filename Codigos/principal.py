@@ -31,11 +31,22 @@ if "modelo_embed" not in st.session_state:
     st.session_state.modelo_embed = modelo_embed
 
 # Selección de idiomas
+idiomas = ['es', 'en', 'fr', 'de', 'it']
 col1, col2 = st.columns(2)
 with col1:
-    idioma_entrada = st.selectbox("Idioma de pregunta", ['es', 'en', 'fr', 'de', 'it'], index=0)
+    idioma_entrada = st.selectbox("Idioma de pregunta", idiomas, index=0, key="entrada")
+
+idiomas_salida = [i for i in idiomas if i != idioma_entrada]
+
+if 'idioma_salida_prev' in st.session_state and st.session_state.idioma_salida_prev in idiomas_salida:
+    salida_default = idiomas_salida.index(st.session_state.idioma_salida_prev)
+else:
+    salida_default = 0
+
 with col2:
-    idioma_salida = st.selectbox("Idioma de la base", ['es', 'en', 'fr', 'de', 'it'], index=1)
+    idioma_salida = st.selectbox("Idioma de la base", idiomas_salida, index=salida_default, key="salida")
+
+st.session_state.idioma_salida_prev = idioma_salida
 
 # Subir documento
 st.markdown("### Cargar documento para la base de conocimiento")
@@ -115,6 +126,7 @@ def enviar_mensaje():
     texto = st.session_state.input_text
     if texto.strip() != "":
         respuestas = union(idioma_entrada, idioma_salida, texto)
+        print(respuestas)
 
         # Historial en idioma de entrada
         st.session_state.historial_idioma_entrada.append(("Tú", texto))
