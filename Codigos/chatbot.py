@@ -1,11 +1,16 @@
 from transformers import GPT2LMHeadModel, GPT2Tokenizer
+from transformers import BlenderbotForConditionalGeneration, BlenderbotTokenizer
 from sentence_transformers import SentenceTransformer
 import faiss
 import numpy as np
 
-# Modelo de chatbot basado en DialoGPT
-dialogo_tokenizer = GPT2Tokenizer.from_pretrained("microsoft/DialoGPT-medium")
-dialogo_modelo = GPT2LMHeadModel.from_pretrained("microsoft/DialoGPT-medium")
+# # Modelo de chatbot basado en DialoGPT
+# dialogo_tokenizer = GPT2Tokenizer.from_pretrained("microsoft/DialoGPT-medium")
+# dialogo_modelo = GPT2LMHeadModel.from_pretrained("microsoft/DialoGPT-medium")
+
+# Modelo de chatbot con BlenderBot
+dialogo_tokenizer = BlenderbotTokenizer.from_pretrained("facebook/blenderbot-400M-distill")
+dialogo_modelo = BlenderbotForConditionalGeneration.from_pretrained("facebook/blenderbot-400M-distill")
 
 # Modelo de embeddings
 modelo_embed = SentenceTransformer('paraphrase-MiniLM-L6-v2')
@@ -19,12 +24,36 @@ def preparar_base_conocimiento(texto_largo, traductor_func, modelo_trad, tokeniz
     index.add(np.array(vectores))
     return index, fragmentos_traducidos
 
-
-def generar_respuesta(prompt):
-    entrada = dialogo_tokenizer.encode(prompt + " ", return_tensors='pt')
-    salida = dialogo_modelo.generate(entrada, max_length=1000, pad_token_id=dialogo_tokenizer.eos_token_id)
+# Para GPT
+# def generar_respuesta(prompt):
+#     entrada = dialogo_tokenizer.encode(prompt + " ", return_tensors='pt')
+#     salida = dialogo_modelo.generate(
+#         entrada, 
+#         max_length=150,
+#         num_beams=5,
+#         temperature=0.9,
+#         top_k=50,
+#         top_p=0.9,
+#         repetition_penalty=1.2,
+#         pad_token_id=dialogo_tokenizer.eos_token_id
+#     )
     
-    return dialogo_tokenizer.decode(salida[0], skip_special_tokens=True)
+#     return dialogo_tokenizer.decode(salida[0], skip_special_tokens=True)
+
+# Para BlenderBot
+def generar_respuesta(prompt):
+    entrada = dialogo_tokenizer([prompt], return_tensors='pt')
+    salida = dialogo_modelo.generate(
+        **entrada,
+        max_length=150,
+        num_beams=5,
+        temperature=0.8,
+        top_p=0.9,
+        repetition_penalty=1.1,
+        pad_token_id=dialogo_tokenizer.eos_token_id
+    )
+    return dialogo_tokenizer.batch_decode(salida, skip_special_tokens=True)[0]
+
 
 def chatbot(prompt, traductor_func, i1_i2_tokenizer, i2_i1_tokenizer, i1_i2_modelo, i2_i1_modelo,
             base_conocimiento_index=None, base_conocimiento_textos=None, modelo_embed=None):
